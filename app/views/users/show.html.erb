@@ -1,2 +1,12 @@
+
+<center>
 <h1>welcome <%= @user.first_name%></h1>
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete%>
+<h2><%=@user.company.name%></h2>
+<% @user.company.properties.each do |p|%>
+<p><%=link_to p.address, p%></p>
+<% end %>
+<h4><%= button_to 'add property', new_property_path%></h4> <br><br>
+
+<h4><%= button_to 'Log Out', destroy_user_session_path, method: :delete%></h4>
+</center>
+
