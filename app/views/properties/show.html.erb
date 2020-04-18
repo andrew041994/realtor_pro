@@ -1,4 +1,11 @@
 <center>
 <h1>Location:  <%=@property.address%></h1>
-<h2>Listed at: $<%=@property.price%></h2>
+<h2>Listed at: <%=number_to_currency(@property.price)%></h2>
+<%= button_to 'Edit Listing', edit_property_path, method: :get%>
+<br><br>
+
+<%= button_to 'Listings', user_path(current_user), method: :get %>
+<br><br>
+
+<h4><%= button_to 'Delete Listing', property_path, method: :delete%></h4>
 </center>

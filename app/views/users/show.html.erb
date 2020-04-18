@@ -1,12 +1,15 @@
 
 <center>
-<h1>welcome <%= @user.first_name%></h1>
+<h1>Welcome <%= @user.username.capitalize%></h1>
 <h2><%=@user.company.name%></h2>
 <% @user.company.properties.each do |p|%>
-<p><%=link_to p.address, p%></p>
+
+<p><%=link_to p.address, p%> <strong><%=p.status%></strong>
+</p>
 <% end %>
-<h4><%= button_to 'add property', new_property_path%></h4> <br><br>
+<%= button_to "add property", new_property_path, method: :get%> <br><br>
 
 <h4><%= button_to 'Log Out', destroy_user_session_path, method: :delete%></h4>
 </center>
 
+    

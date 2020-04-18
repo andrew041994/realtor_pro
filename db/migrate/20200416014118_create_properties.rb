@@ -3,7 +3,7 @@ class CreateProperties < ActiveRecord::Migration[6.0]
     create_table :properties do |t|
       t.string :address
       t.integer :price
-      t.boolean :sold, default: false
+      t.string :status
 
       t.timestamps
     end

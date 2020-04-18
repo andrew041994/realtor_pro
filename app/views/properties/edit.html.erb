@@ -1,0 +1,15 @@
+<center>
+<h1>Edit Listing</h1>
+<%= form_for @property do |f|%>
+<%=f.label :address%>
+<%=f.text_field :address%>
+<br><br>
+<%=f.label :price%>
+<%=f.text_field :price%>
+<br><br>
+<%= f.select :status, ['Sold', 'New Listing', 'Pending'],include_blank: true%>
+<br><br>
+<%=f.submit%>
+<% end %> <br><br>
+<%= button_to 'Back', user_path(current_user), method: :get %>
+</center>
