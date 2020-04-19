@@ -1,11 +1,19 @@
 <center>
+
 <h1>Location:  <%=@property.address%></h1>
 <h2>Listed at: <%=number_to_currency(@property.price)%></h2>
-<%= button_to 'Edit Listing', edit_property_path, method: :get%>
+
+<h3>Clients</h3>
+<%current_user.clients.each do |c|%>
+<p>Name: <%= link_to c.name,user_property_client_path(current_user, @property, c)%>.</p> 
+<% end %>
+ <br><br>
+<%= button_to 'Edit Listing', edit_user_property_path, method: :get%>
 <br><br>
+ 
 
 <%= button_to 'Listings', user_path(current_user), method: :get %>
 <br><br>
 
-<h4><%= button_to 'Delete Listing', property_path, method: :delete%></h4>
+<h4><%= button_to 'Delete Listing', user_property_path, method: :delete%></h4>
 </center>

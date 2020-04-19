@@ -1,0 +1,8 @@
+<h1>NAME: <%=@client.name%></h1>
+<h2>EMAIL: <%=@client.email%></h2>
+<br>
+<h3>Interested In:</h3>
+
+<%@properties.each do |p|%>
+<p><%=link_to p.address, user_property_path(current_user, p)%></p>
+<% end %>

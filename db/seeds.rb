@@ -9,10 +9,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-status = ["Sold", "New Listing", "Pending"]
-5.times do
-  Company.create(name: Faker::Company.name)
-end
+ status = ["Sold", "New Listing", "Pending"]
+#  5.times do
+#   Company.create(name: Faker::Company.name)
+#  end
 
 5.times do
   User.create(username: Faker::Name.first_name,
@@ -21,7 +21,7 @@ end
                   company_id: rand(1..5))
 end
 
-10.times do
+15.times do
   Client.create(name: Faker::Name.name,
                 email: Faker::Internet.email)
 end
@@ -30,13 +30,22 @@ end
   Property.create(address: Faker::Address.street_address,
                   price: Faker::Number.number(digits: 6),
                   company_id: rand(1..5),
-                  status: status.sample )
+                  status: status.sample
+                )
 
   end
 
   20.times do
     UserClient.create(
-      user_id: rand(1..5),
-      client_id: rand(1..10)
+      user_id: rand(1..6),
+      client_id: rand(1..15)
   )
 end
+
+Property.all.each do |p|
+  5.times do 
+    p.clients << Client.find(rand(1..15))
+  end
+end
+
+  

@@ -1,6 +1,6 @@
 <center>
 <h1>Add New Listing</h1>
-<%= form_for @property do |f|%>
+<%= form_for [@user, @property] do |f| %>
 <%=f.label :address%>
 <%=f.text_field :address%>
 <br><br>

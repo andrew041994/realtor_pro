@@ -1,6 +1,6 @@
 <center>
 <h1>Edit Listing</h1>
-<%= form_for @property do |f|%>
+<%= form_for [current_user, @property] do |f|%>
 <%=f.label :address%>
 <%=f.text_field :address%>
 <br><br>
