@@ -3,6 +3,8 @@
 <br>
 <h3>Interested In:</h3>
 
-<%@properties.each do |p|%>
+<%@properties.uniq.each do |p|%>
 <p><%=link_to p.address, user_property_path(current_user, p)%></p>
 <% end %>
+
+<%# <%= button_to 'Remove Client', user_property_client_path, method: :delete%> %>

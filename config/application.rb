@@ -1,4 +1,6 @@
 require_relative 'boot'
+require 'omniauth-google-oauth2'
+require 'omniauth-github'
 
 require 'rails/all'
 

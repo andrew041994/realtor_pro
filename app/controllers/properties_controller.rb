@@ -1,15 +1,17 @@
 class PropertiesController < ApplicationController
 
     def show
-        
+       
         if params[:id]
           
-            @property = user_properties.find_by(id: params[:id])    
-            #byebug   
-             if @property.nil?
-                redirect_to  user_path(current_user), alert: "Property Not Found" 
-             end
-        end
+            @property = user_properties.find_by(id: params[:id])
+            #byebug
+            @clients = @property.clients & current_user.clients 
+             
+          if @property.nil?
+            redirect_to  user_path(current_user), alert: "Property Not Found" 
+          end
+       end
     
     end
 
