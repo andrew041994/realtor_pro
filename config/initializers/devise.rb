@@ -270,9 +270,10 @@ Devise.setup do |config|
   #                 ],
   #                 skip_jwt:
   #                   true
- config.omniauth :github, Rails.application.credentials.dig(:github, :github_client_id),
-  Rails.application.credentials.dig(:github, :github_client_secret)
-  config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
+#  config.omniauth :github, Rails.application.credentials.dig(:github, :github_client_id),
+#   Rails.application.credentials.dig(:github, :github_client_secret)
+  
+ config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
   Rails.application.credentials.dig(:google, :google_client_secret)
   
   # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

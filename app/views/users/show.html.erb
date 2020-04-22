@@ -1,7 +1,10 @@
 
 <center>
-<h1>Welcome <%= @user.username.capitalize%></h1>
-<h2><%=@user.company.name%></h2>
+<h1>Welcome <%= @user.username.titleize%></h1>
+
+<h2><%=@user.company.name%></h2>  
+
+
 <h3>Listings</h3>
 <% @user.company.properties.each do |p|%>
 

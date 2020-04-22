@@ -10,7 +10,8 @@
  <br><br>
 <%= button_to 'Edit Listing', edit_user_property_path, method: :get%>
 <br><br>
- 
+ <%= button_to 'Add Client', new_user_property_client_path(current_user,@property), method: :get %>
+ <br><br>
 
 <%= button_to 'Listings', user_path(current_user), method: :get %>
 <br><br>

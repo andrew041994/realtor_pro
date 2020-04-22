@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users 
+  root to: 'pages#home'
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
   resources :users do 
     resources :properties do 
       resources :clients
     end
-
   end
- root to: 'pages#home'
+  resources :companies
+ 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
