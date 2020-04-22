@@ -13,6 +13,7 @@
 <% end %>
 
 <%= button_to "add property", new_user_property_path(current_user, @property), method: :get%>
+<%= button_to "Cheap Properties", '/users/:user_id/cheap_properties', method: :get%>
 
 <h4><%= button_to 'Log Out', destroy_user_session_path, method: :delete%></h4>
 </center>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get '/users/:user_id/cheap_properties', :to => 'properties#cheap_properties'
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
   resources :users do 
     resources :properties do 

@@ -15,6 +15,11 @@ class PropertiesController < ApplicationController
     
     end
 
+    def cheap_properties
+        @properties = current_user.properties.cheap_properties
+        
+    end
+
     def new
         @user = User.find_by(id: params[:user_id])
         @property = Property.new #(user_id: params[:user_id])       
