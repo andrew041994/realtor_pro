@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
+    def index
+        if user_signed_in?
+            redirect_to user_path(current_user)
+        else
+            redirect_to root_path
+        end
+    end
 
     def show
-        @user = current_user  
-        if @user.company.name == "Default"
-            redirect_to new_company_path      
-        end
+        @company = Company.new
+
+
+        
 
      
         # @property = current_user.properties.find_by(id: params[:id])   

@@ -1,14 +1,22 @@
 
 <center>
-<h1>Welcome <%= @user.username.titleize%></h1>
-
-<h2><%=@user.company.name%></h2>  
+<h1>Welcome <%= current_user.username.titleize%></h1>
+<% if current_user.company.name == "Default" %>
+    <h1>Please Choose Your Company To Continue</h1>
+<br><br>
+<%=form_for @company do |f|%>
+    <%= f.collection_select :id, Company.all, :id, :name, include_blank: true %> <br><br>
+    <%= f.submit "Add Company"%>
+        <% end %>
+  
+<% else %>
+<h2><%=current_user.company.name%></h2>  
 
 
 <h3>Listings</h3>
-<% @user.company.properties.each do |p|%>
+<% current_user.company.properties.each do |p|%>
 
-<p><%=link_to p.address, user_property_path(@user,p)%> <strong><%=p.status%></strong></p>
+<p><%=link_to p.address, user_property_path(current_user,p)%> <strong><%=p.status%></strong></p>
 
 <% end %>
 
@@ -19,3 +27,5 @@
 </center>
 
     
+  
+<% end %>

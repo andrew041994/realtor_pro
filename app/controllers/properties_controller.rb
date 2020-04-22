@@ -1,5 +1,10 @@
 class PropertiesController < ApplicationController
 
+    def index
+        redirect_to user_path(current_user)
+        
+    end
+
     def show
        
         if params[:id]
@@ -16,26 +21,27 @@ class PropertiesController < ApplicationController
     end
 
     def cheap_properties
-        @properties = current_user.properties.cheap_properties
+        @properties = user_properties.cheap_properties
         
     end
 
     def new
-        @user = User.find_by(id: params[:user_id])
+       
         @property = Property.new #(user_id: params[:user_id])       
         @statuses = ['Sold', 'New Listing', 'Pending']      
     end
 
     def create
 
-        @property = Property.new(property_params)
-        #@property[:user_id] = params[:user_id]
+        @property = current_user.properties.build(property_params)
+        byebug
+       
         @property[:company_id] = current_user.company.id
         if @property.save
             redirect_to user_property_path(@property.id, @property)
         else
             flash[:notice] = "Property Was Not Saved!"
-            redirect_to  new_user_property_path(@property.user_id, @property)
+            redirect_to  new_user_property_path(current_user, @property)
         end        
     end
 
@@ -63,10 +69,16 @@ class PropertiesController < ApplicationController
 
 
     def destroy
-     @property = Property.find(params[:id])
-     @property.destroy
-     flash[:notice] = "Property deleted."
-     redirect_to user_path(current_user)
+        
+     @property = user_properties.find_by(id: params[:id])
+     if @property && current_user
+        @property.destroy
+        flash[:notice] = "Property deleted."
+        redirect_to user_path(current_user)
+     else
+        redirect_to  user_path(current_user), alert: "You Do Not Have Permission To Perform That Task"
+     end
+
     end
 
  private

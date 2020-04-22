@@ -1,6 +1,0 @@
-<h1>Please Choose Your Company To Continue</h1>
-<br><br>
-<%=form_for @company do |f|%>
-    <%= f.collection_select :id, Company.all, :id, :name, include_blank: true %> <br><br>
-    <%= f.submit "Add Company"%>
-        <% end %>
