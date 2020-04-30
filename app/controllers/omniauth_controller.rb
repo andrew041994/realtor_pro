@@ -5,7 +5,7 @@ class OmniauthController < ApplicationController
           if @user.persisted?
             sign_in_and_redirect @user       
           else
-            flash[:error] = "Github sign in unsuccessful"  
+            flash[:error] = "Sign in unsuccessful"  
             redirect_to new_user_registration_path
           end
     end

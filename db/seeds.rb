@@ -14,12 +14,12 @@ require 'faker'
 #   Company.create(name: Faker::Company.name)
 #  end
 
-5.times do
-  User.create(username: Faker::Name.first_name,
-                  email: Faker::Internet.email,
-                  password: SecureRandom.hex,
-                  company_id: rand(1..5))
-end
+# 5.times do
+#   User.create(username: Faker::Name.first_name,
+#                   email: Faker::Internet.email,
+#                   password: SecureRandom.hex,
+#                   company_id: rand(1..5))
+# end
 
 15.times do
   Client.create(name: Faker::Name.name,
@@ -37,7 +37,7 @@ end
 
   20.times do
     UserClient.create(
-      user_id: rand(1..6),
+      user_id: rand(10..15),
       client_id: rand(1..15)
   )
 end

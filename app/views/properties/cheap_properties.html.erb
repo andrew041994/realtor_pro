@@ -1,4 +1,7 @@
-<h1>Properties Under $200,000</h1>
+<center><h1>Properties Under <%=number_to_currency(@budget)%></h1>
 <% @properties.each do |p|%>
 <p><%=link_to p.address, user_property_path(current_user ,p)%> <strong><%=p.status%></strong></p>
+
 <% end %>
+<%= button_to 'Back', user_path(current_user), method: :get %>
+</center>

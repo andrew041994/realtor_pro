@@ -1,15 +1,14 @@
 class CompaniesController < ApplicationController
 
     def new
-        @company = Company.new        
+        redirect_to current_user    
     end
 
     def create
-        @user = current_user
-        @user[:company_id] = params[:company][:id]
-        if @user.save
-            redirect_to @user
-        end       
+        current_user[:company_id] = params[:company][:id]
+        
+            redirect_to current_user if current_user.save
+          
         
     end
 end

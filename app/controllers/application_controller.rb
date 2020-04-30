@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
        user_path(current_user)
      end
 
+     def not_found
+      flash[:notice] = "Page Not Found"
+      redirect_to root_path
+    end
+
     protected
 
     def configure_permitted_parameters

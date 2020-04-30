@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 

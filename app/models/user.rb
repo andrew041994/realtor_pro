@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
    def self.create_from_provider_data(provider_data)
     
-      where(provider: provider_data.provider, uid: provider_data.uid).first_or_create.tap do |user|
+      where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
          user.email = provider_data.info.email
          user.username = provider_data.info.name
          user.company_id = Company.find_by(name: "Default").id if user.company_id.nil?

@@ -1,4 +1,4 @@
-<h1>Add Client To <%=@property.address%></h1>
+<center><h1>Add Client To <%=@property.address%></h1>
 
 <%= form_for [current_user, @property, @client] do |f|%>
 <%= f.label :name%>
@@ -8,4 +8,7 @@
 <%= f.email_field :email%>
 <br>
 <%= f.submit%>
+
 <% end %>
+</center>
+

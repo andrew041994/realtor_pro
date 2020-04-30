@@ -10,8 +10,8 @@ class PropertiesController < ApplicationController
         if params[:id]
           
             @property = user_properties.find_by(id: params[:id])
-            #byebug
-            @clients = @property.clients & current_user.clients 
+    
+            @clients = @property.clients & current_user.clients if @property
              
           if @property.nil?
             redirect_to  user_path(current_user), alert: "Property Not Found" 
@@ -21,20 +21,22 @@ class PropertiesController < ApplicationController
     end
 
     def cheap_properties
-        @properties = user_properties.cheap_properties
+        # byebug
+        @budget = budget_params
+        @properties = user_properties.cheap_properties(budget_params)
         
     end
 
     def new
        
-        @property = Property.new #(user_id: params[:user_id])       
+        @property = Property.new      
         @statuses = ['Sold', 'New Listing', 'Pending']      
     end
 
     def create
 
         @property = current_user.properties.build(property_params)
-        byebug
+       
        
         @property[:company_id] = current_user.company.id
         if @property.save
@@ -57,7 +59,6 @@ class PropertiesController < ApplicationController
         @property = user_properties.find_by(id:params[:id])
     
         @property.update(property_params)
-        #@property[:user_id] = params[:user_id]
         @property[:company_id] = current_user.company.id
     
         if @property.save
@@ -91,5 +92,10 @@ class PropertiesController < ApplicationController
 
     def user_properties
         current_user.properties
+    end
+
+    def budget_params
+        params.require(:budget)
+        
     end
 end

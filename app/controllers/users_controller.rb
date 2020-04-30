@@ -9,15 +9,15 @@ class UsersController < ApplicationController
 
     def show
         @company = Company.new
-
-
-        
-
-     
-        # @property = current_user.properties.find_by(id: params[:id])   
-       # byebug 
     end
 
+
+    def update 
+        # byebug
+        # u = User.find_by(name: 'David')
+        current_user.update(company_id: user_params)
+        redirect_to current_user
+    end
 
     private
 
